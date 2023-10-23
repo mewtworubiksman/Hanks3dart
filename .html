@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Scattered Dots</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        .dot {
+            position: absolute;
+            background-color: black;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        .big-dot {
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function getRandomPosition() {
+            var x = window.innerWidth - 20; // Adjust for dot size
+            var y = window.innerHeight - 20;
+            var randomX = Math.floor(Math.random() * x);
+            var randomY = Math.floor(Math.random() * y);
+            return [randomX, randomY];
+        }
+
+        function createDot() {
+            var dot = document.createElement("div");
+            dot.className = "dot";
+
+            // Add the 'big-dot' class to every other dot
+            if (Math.random() < 0.5) {
+                dot.className += " big-dot";
+            }
+
+            var position = getRandomPosition();
+            dot.style.left = position[0] + "px";
+            dot.style.top = position[1] + "px";
+            document.body.appendChild(dot);
+        }
+
+        for (var i = 0; i < 100; i++) { // You can change the number of dots
+            createDot();
+        }
+    </script>
+</body>
+</html>
